@@ -37,28 +37,6 @@ public class SecuredPasswordTest {
 		System.out.println(pass2 + ": " + ver.verifyPassword(pass2));
 		System.out.println(pass3 + ": " + ver.verifyPassword(pass3));
 		
-		
-/*		
-		System.out.println();
-		System.out.println("B033B042D470600A18EFA56FEA3FDA99");
-		BigInteger o = new BigInteger("B033B042D470600A18EFA56FEA3FDA99",16);
-		byte[] b = o.toByteArray();
-		if (b.length > 16) {
-			byte[] b2 = new byte[16];
-			for (int i=0; i<16; i++) {
-				b2[i] = b[i+1];
-			}
-			b = b2;
-		}
-		System.out.println("size of b: " + b.length);
-		for (int i=0; i<b.length; i++) {
-			System.out.println("Byte[" + i + "]: " + b[i]);
-		}
-		BigInteger u = new BigInteger(1, b);
-		String s = u.toString(16).toUpperCase();
-		System.out.println(s);
-
-*/
 	}
 
 }
