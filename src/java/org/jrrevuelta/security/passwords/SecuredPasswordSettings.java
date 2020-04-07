@@ -3,6 +3,17 @@ package org.jrrevuelta.security.passwords;
 import java.math.BigInteger;
 
 
+/**
+ * This static class contains the parameters to deal with the algorithms described in the specification
+ * [JRRevuelta-2019], according to the recommended values and sizes.<br>
+ * <br>
+ * The implementation of the algorithms in this package reference these values, so this is the central point
+ * to reconfigure the code (to a certain extent).<br>
+ * <br>
+ * [JRRevuelta-2019]: José Ramón Revuelta, Abril/2019, Recomendación, Almacenamiento seguro de contraseñas de usuarios.<br>
+ * <br>
+ * @author JRRevuelta
+ */
 public class SecuredPasswordSettings {
 	
 	// Parameters for the execution of the algorithm as described in [JRRevuelta2019].

@@ -14,11 +14,42 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
 
+/**
+ * The secured password generator processes a given password to be stored in the system so that
+ * it can be used in the future to verify incoming claimed passwords. It prepares a 
+ * <code>SecuredPassword</code> object according to the specification [JRRevuelta-2019].<br>
+ * <br>
+ * The generated object can then be stored in the system with the assurance that it is not reversable
+ * and that it is protected against attacks. Normally a <code>String</code> representation would be
+ * appropriate to keep in storage, although a raw form could also be appropriate.<br>
+ * <br> 
+ * [JRRevuelta-2019]: José Ramón Revuelta, Abril/2019, Recomendación, Almacenamiento seguro de contraseñas de usuarios.<br>
+ * <br>
+ * @author JRRevuelta
+ */
 public class SecuredPasswordGenerator {
 	
 	private static Logger log = Logger.getLogger("org.jrrevuelta.security.passwords");
+	
+	
+	public SecuredPasswordGenerator() {
+		super();
+		log.finest("JRR-Security: SecuredPasswordGenerator object instantiated.");
+	}
 
 	
+	/**
+	 * This method is the only one needed to generate the <code>SecuredPassword</code> object that is needed
+	 * to safely store a password in the system. It takes the original password as entered by the user
+	 * and makes all the necessary transformations according to the specification to produce the secured
+	 * representation of it which can be later used for verification.<br>
+	 * <br>
+	 * @param originalPassword A <code>String</code> containing the clear text password entered by
+	 * the user in the system in order to be processed for safe-keeping.
+	 * @return A <code>SecuredPassword</code> object with the components that represent the
+	 * original password in such a way (as described in the specification) that it is protected for
+	 * possible attacks.
+	 */
 	public SecuredPassword generateNewSecuredPassword(String originalPassword) {
 
 		byte[] derivedKey = null;
@@ -94,9 +125,9 @@ public class SecuredPasswordGenerator {
 				macText = u;
 			}
 			
-		// None of these exceptions should be raised (based on input, only by bad configuration)
+		// None of these exceptions should be raised (based on input, only by unsupported configuration)
 		} catch (NoSuchAlgorithmException | InvalidKeyException e) {
-			log.severe("JRR-Security: Exception while deriving key from password: " + e.getMessage());
+			log.severe("JRR-Security (Unsupported configuration): Exception while deriving key from password: " + e.getMessage());
 		}   
 		
 		return dk;
