@@ -28,8 +28,8 @@ public class SecuredPasswordSettings {
 	
 	static final String passwordEncoding = "UTF-8";
 	
-	// Hex AES-256 key to be used ONLY within the package to encrypt/decrypt the salt   TODO: Protect the key
-	static final String saltEncryptionKey = "35EA81CCEFF120A7CD2F4513A8976DC5DC32090A558CC50361DB71555A683B85";
+	// Hex AES-256 key to be used ONLY within the package to encrypt/decrypt the salt   TODO: Protect the key using a HSM
+	static final String saltEncryptionKey = "35EA81CCEFF120A7CD2F4513A8976DC5DC32090A558CC50361DB71555A683B85";   // SAMPLE KEY (DO NOT USE)
 	static byte[] saltEncryptionKeyBytes() { return new BigInteger(saltEncryptionKey, 16).toByteArray(); }
 
 }
