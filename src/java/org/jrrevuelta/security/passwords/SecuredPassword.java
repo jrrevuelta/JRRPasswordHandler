@@ -104,6 +104,12 @@ public class SecuredPassword {
 		this.counter = counter;
 	}
 	
+	public boolean isValid() {
+		return  this.derivedKey !=null && this.derivedKey.length == 64
+			&&  this.salt != null && this.salt.length == 64
+			&&  this.counter > 0;
+	}
+	
 	@Override
 	public String toString() {
 		

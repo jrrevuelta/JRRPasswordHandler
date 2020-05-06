@@ -35,7 +35,11 @@ public class JrrCredentialHandler implements CredentialHandler {
 		// Generate a verifier based on the stored secured password
 		SecuredPasswordVerifier ver = new SecuredPasswordVerifier(new SecuredPassword(securedPassword));
 		
-		return ver.verifyPassword(password);
+		try {
+			return ver.verifyPassword(password);
+		} catch (IllegalStateException e) {
+			return false;
+		}
 	}
 
 	@Override

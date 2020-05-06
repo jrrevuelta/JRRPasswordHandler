@@ -50,9 +50,11 @@ public class SecuredPasswordVerifier {
 	
 	public SecuredPasswordVerifier(SecuredPassword initPassword) {
 		this();
-		this.derivedKey = initPassword.getDerivedKey();
-		this.salt = decryptSalt(initPassword.getSalt());
-		this.counter = initPassword.getCounter();
+		if (initPassword.isValid()) {
+			this.derivedKey = initPassword.getDerivedKey();
+			this.salt = decryptSalt(initPassword.getSalt());
+			this.counter = initPassword.getCounter();
+		}
 	}
 	
 	
