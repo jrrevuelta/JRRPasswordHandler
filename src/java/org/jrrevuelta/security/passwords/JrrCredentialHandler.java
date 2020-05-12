@@ -50,6 +50,10 @@ public class JrrCredentialHandler implements CredentialHandler {
 		SecuredPasswordGenerator gen = new SecuredPasswordGenerator();
 		SecuredPassword securedPassword = gen.generateNewSecuredPassword(password);
 		
-		return securedPassword.toString();
+		if (securedPassword != null) {
+			return securedPassword.toString();
+		} else {
+			return null;
+		}
 	}
 }

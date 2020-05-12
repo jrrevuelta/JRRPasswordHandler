@@ -57,6 +57,11 @@ public class SecuredPasswordGenerator {
 		int counter = 0;
 		SecureRandom random = new SecureRandom();
 		
+		// Validate input
+		if (originalPassword == null || originalPassword.isEmpty()) {
+			return null;
+		}
+		
 		// Generate salt... random sequence of 512 bits (64 bytes)
 		salt = new byte[SecuredPasswordSettings.saltSizeBytes];
 		random.nextBytes(salt);
