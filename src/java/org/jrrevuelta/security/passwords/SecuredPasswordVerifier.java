@@ -101,6 +101,8 @@ public class SecuredPasswordVerifier {
 		if (this.derivedKey == null || this.salt == null || this.counter == 0) {
 			throw new IllegalStateException("JRR-Security: All three components of a SecuredPassword must be set before verification.");
 		}
+		if (claimedPassword == null || claimedPassword.isEmpty()) return false;
+		
 		boolean verification = false;
 		try {
 			byte[] claimedPasswordBytes = claimedPassword.getBytes(SecuredPasswordSettings.passwordEncoding);

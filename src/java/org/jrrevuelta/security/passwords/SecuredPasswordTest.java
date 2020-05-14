@@ -37,6 +37,9 @@ public class SecuredPasswordTest {
 		System.out.println(pass2 + ": " + ver.verifyPassword(pass2));
 		System.out.println(pass3 + ": " + ver.verifyPassword(pass3));
 		
+		System.out.println("<<Empty String>>" + ": " + handler.matches("", storedPassword));
+		
+		
 	}
 
 }
